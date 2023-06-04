@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Button } from "react-native";
+import Registration from "./Screens/RegistrationScreen/Registration";
+import Login from "./Screens/LoginScreen/Login";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import 'react-native-gesture-handler';
 
+const MainStack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+
+      <MainStack.Navigator initialRouteName="Registration">
+        <MainStack.Screen name="Registration" component={Registration} options={{headerShown: false}}
+        // options={{
+        //   title: "Home screen",
+        //   headerStyle: {
+        //     backgroundColor: "#f4511e",
+        //   },
+        //   headerTintColor: "#fff",
+        //   headerTitleStyle: {
+        //     fontWeight: "bold",
+        //     fontSize: 20,
+        //   },
+        //   headerRight: () => (
+        //     <Button
+        //       onPress={() => alert("This is a button!")}
+        //       title="Press me"
+        //       color="#fff"
+        //     />
+        //   ),
+        // }}
+        
+        />
+        <MainStack.Screen name="Login" component={Login} options={{headerShown: false}} />
+        {/* <MainStack.Screen name="Home" component={Home} /> */}
+      </MainStack.Navigator>
+
+      </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
